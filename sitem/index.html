@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ege Baran — Kişisel Web Sitesi | Gezi Uzmanlığı</title>
+  
+  <!-- Sekme Simgesi (Favicon): Maskot Görseli -->
+  <link rel="icon" type="image/jpeg" href="resimler/maskot1.jpg">
+  
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body class="intro-active">
+
+  <!-- SİNEMATİK 3D AÇILIŞ SAHNESİ (THREE.JS WEBGL INTRO) -->
+  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="3 Boyutlu Açılış Deneyimi">
+    <!-- Three.js 3D Sahne Tuvali -->
+    <div id="threeContainer" class="three-container">
+      <canvas id="threeCanvas"></canvas>
+    </div>
+
+    <!-- Üst Bilgi Çubuğu -->
+    <div class="intro-top-bar">
+      <div class="intro-badge">
+        <span class="intro-badge-dot"></span>
+        <span>EGE BARAN // 3D KEŞİF BAŞLIYOR</span>
+      </div>
+      <span class="intro-meta-text">MASKOT: BARNABY (3D)</span>
+    </div>
+
+    <!-- Alt İlerleme & Kontrol Çubuğu -->
+    <div class="intro-bottom-bar">
+      <div class="intro-progress-box">
+        <div class="intro-status-row">
+          <span id="introStatusText" class="intro-status-text">Barnaby Havalanıyor...</span>
+          <span id="introPercentage" class="intro-percentage">00%</span>
+        </div>
+        <div class="intro-progress-track">
+          <div id="introProgressFill" class="intro-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Girişi Geç Butonu (Neo-brutalist) -->
+      <button id="introSkipBtn" type="button" class="intro-skip-btn neo-box" aria-label="Giriş animasyonunu geç">
+        <span>GEÇ</span>
+        <span class="intro-skip-arrow">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sabit Üst Menü (Navbar) -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand-group">
+        <a href="#kapak" class="owl-logo-link" title="Ana Sayfaya Dön" aria-label="Ana Sayfa — Baykuş Logosu">
+          <svg class="owl-svg-icon" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Gövde -->
+            <path d="M25 45 C25 22, 75 22, 75 45 C75 75, 68 88, 50 88 C32 88, 25 75, 25 45 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+            <!-- Kulak Tüyleri -->
+            <polygon points="26,38 35,16 46,30" fill="#707070" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+            <polygon points="74,38 65,16 54,30" fill="#707070" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- Kanatlar -->
+            <path d="M25 46 C21 60, 24 74, 34 78 C31 70, 31 58, 25 46 Z" fill="#707070" stroke="#000000" stroke-width="3"/>
+            <path d="M75 46 C79 60, 76 74, 66 78 C69 70, 69 58, 75 46 Z" fill="#707070" stroke="#000000" stroke-width="3"/>
+            <!-- Gözler -->
+            <circle cx="39" cy="46" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="3.5"/>
+            <circle cx="61" cy="46" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="3.5"/>
+            <circle cx="41" cy="46" r="6" fill="#181818" class="owl-pupil"/>
+            <circle cx="59" cy="46" r="6" fill="#181818" class="owl-pupil"/>
+            <circle cx="43" cy="44" r="2" fill="#FFFFFF"/>
+            <circle cx="61" cy="44" r="2" fill="#FFFFFF"/>
+            <!-- Gaga -->
+            <polygon points="50,52 44,62 56,62" fill="#181818" stroke="#000000" stroke-width="2"/>
+            <!-- Karın Detayı -->
+            <path d="M42 70 Q50 75 58 70" stroke="#707070" stroke-width="3" stroke-linecap="round"/>
+            <path d="M44 76 Q50 81 56 76" stroke="#707070" stroke-width="3" stroke-linecap="round"/>
+            <!-- Pençeler -->
+            <path d="M41 88 L41 93 M49 88 L49 93 M59 88 L59 93" stroke="#000000" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="#kapak" class="brand-text">EGE BARAN</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç/Kapat">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#kapak" class="nav-link">Kapak</a>
+        <a href="#hakkimda" class="nav-link">Hakkımda</a>
+        <a href="#gezi" class="nav-link">Gezi Uzmanlığı</a>
+        <a href="#ilgi-alanlarim" class="nav-link">İlgi Alanlarım</a>
+        <a href="#iletisim" class="nav-link">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. BÖLÜM: KAPAK (Tam Ekran Yüksekliği) -->
+    <section id="kapak" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-card neo-box">
+          <div class="hero-image-wrap">
+            <img src="resimler/manzara.jpg" alt="Keçe vadisi ve köy manzarasını betimleyen geniş kapak görseli" class="hero-img">
+          </div>
+          <div class="hero-content">
+            <span class="hero-badge">UZMANLIK ALANI: GEZİ &amp; KEŞİF</span>
+            <h1 class="hero-title">Ege Baran</h1>
+            <p class="hero-intro">
+              Doğal vadilerden kadim ticaret yollarına, saklı patikalardan yerel kültürlerin kalbine uzanan seyahat rotaları tasarlayan gezi uzmanı. Bilinmeyeni arayan Kaşifler ve derin hafızanın peşindeki Bilginler için kapsamlı bir seyahat rehberi.
+            </p>
+            <div class="hero-btn-group">
+              <a href="#gezi" class="neo-btn neo-btn-accent">Gezi Notları</a>
+              <a href="#hakkimda" class="neo-btn">Hakkımda</a>
+              <a href="#iletisim" class="neo-btn">İletişim</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. BÖLÜM: HAKKIMDA -->
+    <section id="hakkimda" class="section hakkimda-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Hakkımda</h2>
+        </div>
+        <div class="hakkimda-grid">
+          <div class="mascot-card neo-box">
+            <div class="mascot-img-wrap">
+              <img src="resimler/maskot1.jpg" alt="Sitenin resmi maskotu olan el yapımı sevimli keçe baykuş Barnaby" class="mascot-img">
+            </div>
+            <div class="mascot-meta">
+              <span class="mascot-tag">Maskot: Baykuş Barnaby</span>
+              <p class="mascot-sub">Bilgelik &amp; Keşif Rehberi</p>
+            </div>
+          </div>
+
+          <div class="about-card neo-box">
+            <h3 class="about-title">Merhaba, Ben Ege Baran.</h3>
+            <p class="about-text">
+              Gezgin ruhumu araştırmacı bir bakış açısıyla birleştirerek gezi ve keşif uzmanlığı alanında çalışıyorum. Yeryüzünün farklı köşelerini adımlarken yalnızca coğrafi sınırları değil; o toprakların bin yıllık geçmişini, yerel halkların köklü yaşam kültürünü ve el değmemiş tabiat harikalarını belgeliyorum.
+            </p>
+            <p class="about-text">
+              Maskotum olan bilge baykuşun meraklı bakışları rehberliğinde; rotaları yüzeysel bir tatilin ötesine taşıyıp zengin bir öğrenme deneyimine dönüştürüyorum. Bu sitede adımlarını doğaya atan cesur Kaşifler ile bilginin izini süren araştırmacı Bilginler için iki farklı perspektifte seyahat birikimlerimi paylaşıyorum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BÖLÜM: UZMANLIK ALANI: GEZİ (KAŞİF VE BİLGİN ZİYARETÇİLER İÇİN) -->
+    <section id="gezi" class="section gezi-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Uzmanlık Alanı: Gezi</h2>
+          <p class="section-subtitle">
+            Bu sitede iki farklı yolcu tipi için özel bilgi derlemeleri yer alır. Sahada aksiyon arayan Kaşifler ve toprağın hafızasını arayan Bilginler için seçtiğim gezi rehberi:
+          </p>
+        </div>
+
+        <!-- İnteraktif Görünüm Filtre Butonları -->
+        <div class="gezi-filter-bar neo-box" role="toolbar" aria-label="Ziyaretçi Görünüm Seçenekleri">
+          <span class="filter-label">Ziyaretçi Bakışı:</span>
+          <div class="filter-btn-group">
+            <button type="button" class="neo-filter-btn active" data-filter="all">Tüm Bilgiler</button>
+            <button type="button" class="neo-filter-btn" data-filter="kasif">Kaşif Ziyaretçi</button>
+            <button type="button" class="neo-filter-btn" data-filter="bilgin">Bilgin Ziyaretçi</button>
+          </div>
+        </div>
+
+        <div class="gezi-grid">
+          <!-- KAŞİF ZİYARETÇİ KARTI -->
+          <article class="gezi-card neo-box" data-persona="kasif">
+            <div class="gezi-card-header kasif-header">
+              <span class="gezi-badge">SAHA &amp; ROTA REHBERİ</span>
+              <h3 class="gezi-card-title">Kaşif Ziyaretçi Neleri Bilir?</h3>
+              <p class="gezi-card-lead">
+                Bilinmeyeni merak eden, haritaların ötesine geçip patikayı adımlayan cesur gezginler için sahadan derlenen pratik bilgiler:
+              </p>
+            </div>
+            <div class="gezi-card-body">
+              <ul class="gezi-list">
+                <li class="gezi-item">
+                  <div class="item-number">01</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Gizli Patikalar ve Rota Seçimi</h4>
+                    <p class="item-desc">
+                      Turistik ana güzergâhların dışında kalan vadiler, el değmemiş kanyon geçitleri, güvenli kamp kurma noktaları ve alternatif su kaynaklarının konumları.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">02</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Doğal Yön Bulma &amp; Arazi Taktikleri</h4>
+                    <p class="item-desc">
+                      Dijital cihazlara bağımlı kalmadan güneşin açısı, ağaç gövdelerindeki yosun dokusu, rüzgâr yönü ve yeryüzü şekillerini okuyarak arazide yön tayin etme becerisi.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">03</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Hafif Çanta, Maksimum Hareket</h4>
+                    <p class="item-desc">
+                      Uzun yürüyüşlerde enerji tasarrufu sağlayan hayati ekipman seçimi, ani hava ve zemin değişikliklerine hızlı adapte olma yöntemleri.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">04</div>
+                  <div class="item-content">
+                    <h4 class="item-title">İz Bırakmama (Leave No Trace)</h4>
+                    <p class="item-desc">
+                      Yaban hayatın doğal dengesini bozmadan ilerleme, kontrollü ateş kuralları ve doğadan sadece fotoğraflar ile anılar alıp geride hiçbir atık bırakmama etiği.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- BİLGİN ZİYARETÇİ KARTI -->
+          <article class="gezi-card neo-box" data-persona="bilgin">
+            <div class="gezi-card-header bilgin-header">
+              <span class="gezi-badge">TARİH &amp; KÜLTÜR ATLASI</span>
+              <h3 class="gezi-card-title">Bilgin Ziyaretçi Neleri Bilir?</h3>
+              <p class="gezi-card-lead">
+                Adımlanan toprağın bin yıllık hafızasını, mimari mirasını ve yaşayan insan hikâyelerini derinlemesine anlamak isteyen araştırmacılar için derlenen bilgiler:
+              </p>
+            </div>
+            <div class="gezi-card-body">
+              <ul class="gezi-list">
+                <li class="gezi-item">
+                  <div class="item-number">01</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Kadim Ticaret Yolları &amp; Tarihsel Katmanlar</h4>
+                    <p class="item-desc">
+                      Vadilerin antik çağlardan İpek Yolu'na uzanan kervan geçişlerindeki stratejik rolü, tarihi menziller, köprü kalıntıları ve yerleşim katmanları.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">02</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Yöresel Mimari ve Ekolojik Uyum</h4>
+                    <p class="item-desc">
+                      Bölgedeki taş ve ahşap yapıların yerel iklim koşullarıyla uyumu; çatı eğimlerinden duvar kalınlıklarına kadar yüz yıllık yapı bilgeliğinin çözümlenmesi.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">03</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Sözlü Kültür, Etnografya ve Mitler</h4>
+                    <p class="item-desc">
+                      Yöre halkının kuşaktan kuşağa anlattığı dağ efsaneleri, yayla göç ritüelleri, vadide yankılanan türkülerin ve anonim ezgilerin tarihsel kökeni.
+                    </p>
+                  </div>
+                </li>
+                <li class="gezi-item">
+                  <div class="item-number">04</div>
+                  <div class="item-content">
+                    <h4 class="item-title">Kültürel Mirası Anlama ve Koruma</h4>
+                    <p class="item-desc">
+                      Ziyaret edilen coğrafyayı tüketilen bir manzara olarak değil, gelecek kuşaklara aktarılması gereken yaşayan bir kültür havzası olarak koruma felsefesi.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BÖLÜM: İLGİ ALANLARIM -->
+    <section id="ilgi-alanlarim" class="section ilgi-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">İlgi Alanlarım</h2>
+        </div>
+        <div class="cards-grid">
+          <!-- Kart 1: Müzik -->
+          <article class="interest-card neo-box">
+            <div class="card-img-wrap">
+              <img src="resimler/resim1.jpg" alt="Vinil plak ve kulaklık detayları içeren monokrom müzik temalı keçe görseli" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="card-num">01</span>
+              <h3 class="card-title">Müzik</h3>
+              <p class="card-desc">
+                Gezilen coğrafyaların özgün halk ezgilerini, etnik tınılarını ve taş plakların sıcak melodilerini araştırmak; yollarda bana eşlik eden ses dünyasını keşfetmek.
+              </p>
+            </div>
+          </article>
+
+          <!-- Kart 2: Spor -->
+          <article class="interest-card neo-box">
+            <div class="card-img-wrap">
+              <img src="resimler/resim2.jpg" alt="Dinamik yaşam ve fiziksel disiplini yansıtan özenli spor görseli" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="card-num">02</span>
+              <h3 class="card-title">Spor</h3>
+              <p class="card-desc">
+                Zorlu arazi koşullarında doğa yürüyüşleri yapmak, dik patikalarda kondisyonu korumak ve keşif yolculuklarında hem fiziksel hem zihinsel dayanıklılığı yüksek tutmak.
+              </p>
+            </div>
+          </article>
+
+          <!-- Kart 3: Yemek -->
+          <article class="interest-card neo-box">
+            <div class="card-img-wrap">
+              <img src="resimler/resim3.jpg" alt="Tatlı ve lezzetli pasta dilimi detaylarıyla gastronomi sanatını anlatan keçe görseli" class="card-img">
+            </div>
+            <div class="card-body">
+              <span class="card-num">03</span>
+              <h3 class="card-title">Yemek</h3>
+              <p class="card-desc">
+                Keşif rotalarındaki köy fırınlarını ve geleneksel tatları yerinde denemek; yöresel mutfak kültürlerini, doğal malzemelerle pişen asırlık yemekleri incelemek.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BÖLÜM: İLETİŞİM -->
+    <section id="iletisim" class="section iletisim-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">İletişim</h2>
+        </div>
+        <div class="contact-card neo-box">
+          <h3 class="contact-title">Keşif ve Rota Ortaklığı</h3>
+          <p class="contact-desc">
+            Yeni seyahat rotaları, coğrafi araştırmalar ve gezi projeleri üzerine fikir alışverişinde bulunmak veya açık kaynak çalışmalarımı incelemek için GitHub profilimi ziyaret edebilirsiniz.
+          </p>
+          <div class="contact-actions">
+            <a href="https://github.com/egebaran" target="_blank" rel="noopener noreferrer" class="neo-btn contact-btn">
+              <span>GitHub Profilimi Görüntüle</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ALT BİLGİ (Footer) -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-copy">© 2026 Ege Baran. Tüm hakları saklıdır.</p>
+      <p class="ai-note">Bu sitedeki görseller yapay zekâ ile üretildi.</p>
+    </div>
+  </footer>
+
+  <!-- Three.js 3D Kütüphanesi -->
+  <script src="three.min.js"></script>
+  <script src="script.js"></script>
+  <script src="intro.js"></script>
+</body>
+</html>

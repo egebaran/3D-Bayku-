@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felt & Form — Minimalist Keçe Evreni</title>
+  
+  <!-- Minimalist Tipografi: Inter & Instrument Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:italic@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Minimal Navigasyon -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-text">FELT <em>&</em> FORM</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#landscape" class="nav-link">Vadi</a>
+        <a href="#mascot" class="nav-link">Maskot</a>
+        <a href="#gallery" class="nav-link">Koleksiyon</a>
+        <a href="#studio" class="nav-link">Stüdyo</a>
+      </nav>
+
+      <div class="nav-tools">
+        <button id="audioToggleBtn" class="minimal-btn audio-btn" title="Akustik Ses">
+          <span class="audio-icon">◌</span>
+          <span class="audio-label">Ses</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-meta">
+          <span class="index-num">01 / DOKUNSAL SANAT</span>
+          <span class="separator">—</span>
+          <span>EL YAPIMI KEÇE EVRENİ</span>
+        </div>
+
+        <h1 class="hero-title">
+          Sessiz, özenli ve <br>
+          <em>ilmek ilmek</em> işlenmiş bir dünya.
+        </h1>
+
+        <p class="hero-description">
+          Doğal lifler, saf yün dikişler ve monokrom hikâyeler. Gri tonların dinginliğinde 
+          can bulan keçe baykuş Barnaby ve vadinin sakin yaşamı.
+        </p>
+
+        <!-- Panorama Görsel Çerçevesi -->
+        <div id="landscape" class="panorama-frame">
+          <div class="image-wrapper">
+            <img src="manzara.jpg" alt="Keçe Vadisi Geniş Manzara" class="zoomable" data-title="Keçe Vadisi Panoraması">
+            <div class="image-overlay-info">
+              <span>Keçe Vadisi — Müzik Sahnesi & Köy Panayırı</span>
+              <span>16:9 • El Dikişi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASCOT SPOTLIGHT SECTION -->
+    <section id="mascot" class="section mascot-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="num">02</span>
+          <span class="line"></span>
+          <span class="title">RESMİ MASKOT</span>
+        </div>
+
+        <div class="mascot-grid">
+          <!-- Maskot Fotoğrafı -->
+          <div class="mascot-card">
+            <div class="mascot-img-box">
+              <img src="maskot1.jpg" alt="Barnaby Maskot" class="zoomable" data-title="Barnaby — Resmi Maskot">
+              <span class="card-tag">Barnaby The Owl</span>
+            </div>
+          </div>
+
+          <!-- Maskot Bilgileri & Etkileşim -->
+          <div class="mascot-info">
+            <h2 class="section-heading">
+              Barnaby ile tanışın.
+            </h2>
+            <p class="body-lead">
+              Gözleri merak dolu, kulakları vadide yankılanan her ezgiyi duyan resmi maskotumuz. 
+              Siyah ve kırçıllı gri keçelerden, dikiş iğnesinin titizliğiyle biçimlendirildi.
+            </p>
+
+            <div class="spec-list">
+              <div class="spec-row">
+                <span class="spec-name">Karakter</span>
+                <span class="spec-val">Meraklı, sakin, müziksever</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Malzeme</span>
+                <span class="spec-val">%100 Yün Keçe, Pamuk Dikiş İpliği</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">İlgi Alanları</span>
+                <span class="spec-val">Gramofon plakları, çilekli kekler, açık hava</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-name">Varlık Yeri</span>
+                <span class="spec-val">Büyük Meşe Ağacı Dalı, Vadi Girişi</span>
+              </div>
+            </div>
+
+            <!-- İnteraktif Alıntı / Konuşma Kutusu -->
+            <div class="quote-card">
+              <p id="mascotQuote" class="quote-text">
+                "Her dikiş bir sabır, her doku yeni bir anı taşır."
+              </p>
+              <button id="mascotQuoteBtn" class="minimal-btn">
+                <span>Başka bir şey söyle</span>
+                <span class="arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERİ / KOLEKSİYON -->
+    <section id="gallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header-flex">
+          <div class="section-label">
+            <span class="num">03</span>
+            <span class="line"></span>
+            <span class="title">KOLEKSİYON</span>
+          </div>
+          <span class="gallery-count">3 Eser</span>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Eser 1 -->
+          <article class="art-card">
+            <div class="art-img-box">
+              <img src="resimler/resim1.jpg" alt="Müzik ve Vinil Plak" class="zoomable" data-title="No. 1 — Vinil & Akustik">
+              <span class="art-index">01</span>
+            </div>
+            <div class="art-content">
+              <h3 class="art-title">Vinil & Akustik Oda</h3>
+              <p class="art-desc">
+                Keçe kulaklıkları ve minyatür pikabıyla müzik dünyasına dalan Barnaby.
+              </p>
+              <div class="art-meta">Monokrom Yün • 2026</div>
+            </div>
+          </article>
+
+          <!-- Eser 2 -->
+          <article class="art-card">
+            <div class="art-img-box">
+              <img src="resimler/resim2.jpg" alt="Cupcake ve Çilek" class="zoomable" data-title="No. 2 — Tatlı Zamanı">
+              <span class="art-index">02</span>
+            </div>
+            <div class="art-content">
+              <h3 class="art-title">Çilekli Cupcake</h3>
+              <p class="art-desc">
+                El işi krema kıvrımları ve tepesinde tek bir vişne detayıyla tatlı köşesi.
+              </p>
+              <div class="art-meta">Kabartma Dikiş • 2026</div>
+            </div>
+          </article>
+
+          <!-- Eser 3 -->
+          <article class="art-card">
+            <div class="art-img-box">
+              <img src="resimler/resim3.jpg" alt="Pasta Dilimi ve Kutlama" class="zoomable" data-title="No. 3 — Bir Dilim Kutlama">
+              <span class="art-index">03</span>
+            </div>
+            <div class="art-content">
+              <h3 class="art-title">Bir Dilim Kutlama</h3>
+              <p class="art-desc">
+                Kat kat kumaş katmanlarından fırınlanmış keçe pasta ve neşeli bekleyiş.
+              </p>
+              <div class="art-meta">Katmanlı Keçe • 2026</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASKOT OLUŞTURUCU / STÜDYO -->
+    <section id="studio" class="section studio-section">
+      <div class="container">
+        <div class="section-label">
+          <span class="num">04</span>
+          <span class="line"></span>
+          <span class="title">MASKOT STÜDYOSU</span>
+        </div>
+
+        <div class="studio-header">
+          <h2 class="section-heading">Kendi maskotunu biçimlendir.</h2>
+          <p class="body-lead">
+            Minimalist parametrelerle kişisel keçe baykuşunu kurgula. 
+            Renkleri, bakışları ve aksesuarları özelleştirip vektörel olarak dışa aktar.
+          </p>
+        </div>
+
+        <div class="studio-workspace">
+          <!-- Sol: Saf Vektör Önizleme -->
+          <div class="studio-canvas">
+            <div class="canvas-display">
+              <svg id="mascotSvg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+                <!-- script.js dinamik olarak çizecek -->
+              </svg>
+            </div>
+            <div class="canvas-footer">
+              <span class="canvas-status">Önizleme: Vektör Keçe</span>
+              <button id="randomMascotBtn" class="minimal-btn text-only">Rastgele</button>
+            </div>
+          </div>
+
+          <!-- Sağ: Minimal Kontrol Paneli -->
+          <div class="studio-controls">
+            <!-- Renk Paleti -->
+            <div class="control-block">
+              <label class="control-title">Gövde Keçe Tonu</label>
+              <div class="palette-row">
+                <button class="color-dot active" data-color="#24262b" style="background:#24262b" title="Kömür Siyahı"></button>
+                <button class="color-dot" data-color="#4a4d52" style="background:#4a4d52" title="Koyu Duman"></button>
+                <button class="color-dot" data-color="#7a7d84" style="background:#7a7d84" title="Gri Yün"></button>
+                <button class="color-dot" data-color="#544439" style="background:#544439" title="Sıcak Ceviz"></button>
+                <button class="color-dot" data-color="#2d3d34" style="background:#2d3d34" title="Yosun Yeşili"></button>
+                <button class="color-dot" data-color="#253244" style="background:#253244" title="Gece Mavisi"></button>
+              </div>
+            </div>
+
+            <!-- Göz Tasarımı -->
+            <div class="control-block">
+              <label class="control-title">Göz İfadesi</label>
+              <div class="option-pills">
+                <button class="pill active" data-eyes="curious">Meraklı</button>
+                <button class="pill" data-eyes="wink">Göz Kırpan</button>
+                <button class="pill" data-eyes="glasses">Gözlüklü</button>
+                <button class="pill" data-eyes="sleepy">Huzurlu</button>
+              </div>
+            </div>
+
+            <!-- Aksesuar -->
+            <div class="control-block">
+              <label class="control-title">Aksesuar</label>
+              <div class="option-pills">
+                <button class="pill active" data-acc="headphones">Kulaklık</button>
+                <button class="pill" data-acc="cupcake">Cupcake</button>
+                <button class="pill" data-acc="cake">Pasta</button>
+                <button class="pill" data-acc="bowtie">Papyon</button>
+                <button class="pill" data-acc="none">Yalın</button>
+              </div>
+            </div>
+
+            <!-- Dikiş İpliği -->
+            <div class="control-block">
+              <label class="control-title">Dikiş İpliği</label>
+              <div class="option-pills">
+                <button class="pill active" data-stitch="#ffffff">Beyaz İplik</button>
+                <button class="pill" data-stitch="#e6c387">Keten Sarısı</button>
+                <button class="pill" data-stitch="#111111">Koyu Kontrast</button>
+              </div>
+            </div>
+
+            <!-- İndirme -->
+            <div class="control-actions">
+              <button id="downloadMascotBtn" class="minimal-btn primary-btn">
+                <span>SVG Olarak İndir</span>
+                <span class="icon">↓</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MINIMAL FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-text">FELT <em>&</em> FORM</span>
+        <p class="footer-tagline">El yapımı yün keçe sanatı ve sessiz hikâyeler.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#landscape">Vadi</a>
+        <a href="#mascot">Maskot</a>
+        <a href="#gallery">Koleksiyon</a>
+        <a href="#studio">Stüdyo</a>
+      </div>
+
+      <div class="footer-meta">
+        <span>© 2026 Felt & Form Studio.</span>
+        <span>Minimalist Tasarım.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MINIMAL FLOATING MASCOT BUTTON -->
+  <div class="floating-mascot-dock">
+    <div id="dockSpeechBubble" class="dock-speech">
+      Merhaba, vadiye hoş geldin.
+    </div>
+    <button id="dockMascotBtn" class="dock-btn" title="Barnaby ile konuş">
+      <img src="maskot1.jpg" alt="Barnaby">
+    </button>
+  </div>
+
+  <!-- MINIMAL LIGHTBOX MODAL -->
+  <div id="imageModal" class="modal-backdrop">
+    <div class="modal-box">
+      <button id="modalCloseBtn" class="modal-close" aria-label="Kapat">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImage" src="" alt="Büyütülmüş Görsel">
+      </div>
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
